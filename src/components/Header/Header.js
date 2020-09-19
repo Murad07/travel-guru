@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div>
       <nav className='navbar navbar-light '>
-        <a href='#' className='navbar-brand'>
+        <a href='/' className='navbar-brand'>
           <img src={logo} height='30' alt='' />
         </a>
         <div>
@@ -18,16 +18,16 @@ const Header = () => {
           ></input>
         </div>
 
-        <a class='nav-link text-white' href='#'>
+        <a className='nav-link text-white' href='#'>
           News
         </a>
-        <a class='nav-link text-white' href='#'>
+        <a className='nav-link text-white' href='#'>
           Destination
         </a>
-        <a class='nav-link text-white' href='#'>
+        <a className='nav-link text-white' href='#'>
           Blog
         </a>
-        <a class='nav-link text-white' href='#'>
+        <a className='nav-link text-white' href='#'>
           Contact
         </a>
         <div>

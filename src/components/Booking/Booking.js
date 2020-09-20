@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(3),
       width: '25ch',
+      backgroundColor: 'white',
     },
   },
 }));
@@ -24,7 +25,7 @@ const Booking = () => {
 
   return (
     <div>
-      <Grid container spacing={2}>
+      <Grid container spacing={5}>
         <Grid item xs={6}>
           <div className='text-white px-4 pt-5'>
             <h1>{title}</h1>
@@ -32,58 +33,55 @@ const Booking = () => {
           </div>
         </Grid>
         <Grid item xs={6}>
-          <div className='formBg'>
-            <form className={classes.root} noValidate autoComplete='off'>
-              <Grid container direction={'column'} spacing={3}>
-                <Grid item>
-                  <TextField
-                    id='outlined-basic'
-                    label='Origin'
-                    variant='outlined'
-                  />
-                </Grid>
-                <Grid item>
-                  <TextField
-                    id='outlined-basic'
-                    label='Destination'
-                    variant='outlined'
-                  />
-                </Grid>
-                <Grid item>
-                  <TextField
-                    id='date'
-                    label='From'
-                    type='date'
-                    defaultValue='2017-05-24'
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </Grid>
-                <Grid item>
-                  <TextField
-                    id='date'
-                    label='To'
-                    type='date'
-                    defaultValue='2017-05-24'
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </Grid>
-                <Grid item>
-                  <a
-                    href={`/hotel/${title}`}
-                    className='btn btn-warning my-2 mr-sm-0'
-                  >
-                    Start Booking
-                  </a>
-                </Grid>
+          {/* <div className='formBg'> */}
+          <form className={classes.root} noValidate autoComplete='off'>
+            <Grid container direction={'column'} spacing={3}>
+              <Grid item>
+                <TextField
+                  id='outlined-basic'
+                  label='Origin'
+                  variant='outlined'
+                />
               </Grid>
-            </form>
-          </div>
+              <Grid item>
+                <TextField
+                  id='outlined-basic'
+                  label='Destination'
+                  variant='outlined'
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  id='date'
+                  label='From'
+                  type='date'
+                  defaultValue='2017-05-24'
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  id='date'
+                  label='To'
+                  type='date'
+                  defaultValue='2017-05-24'
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <a href={`/hotel/${title}`} className='btn btn-warning '>
+                  Start Booking
+                </a>
+              </Grid>
+            </Grid>
+          </form>
+          {/* </div> */}
         </Grid>
       </Grid>
     </div>

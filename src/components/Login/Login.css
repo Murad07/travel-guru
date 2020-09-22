@@ -1,7 +1,7 @@
-form {
+.formBlade {
   max-width: 400px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 30px;
   background-color: white;
   border-radius: 10px;
   padding: 20px;
@@ -19,11 +19,29 @@ form {
 .separator::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid grey;
 }
 .separator::before {
   margin-right: 0.25em;
 }
 .separator::after {
   margin-left: 0.25em;
+}
+
+.socialBtn {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 4px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  text-align: center;
+}
+
+.socialBtn:hover {
+  text-decoration: none;
+}
+.alignCenter {
+  display: block;
+  text-align: center;
 }

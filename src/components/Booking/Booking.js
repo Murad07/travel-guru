@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import fakeData from '../../fakeData/index';
 import TextField from '@material-ui/core/TextField';
@@ -75,9 +75,9 @@ const Booking = () => {
                 />
               </Grid>
               <Grid item>
-                <a href={`/hotel/${title}`} className='btn btn-warning '>
+                <Link to={`/hotel/${title}`} className='btn btn-warning '>
                   Start Booking
-                </a>
+                </Link>
               </Grid>
             </Grid>
           </form>

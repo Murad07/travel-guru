@@ -33,6 +33,9 @@ function App() {
             <Router>
               <Header></Header>
               <Switch>
+                <Route path='/home'>
+                  <Home></Home>
+                </Route>
                 <Route path='/booking/:id'>
                   <Booking />
                 </Route>

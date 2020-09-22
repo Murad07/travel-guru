@@ -3,13 +3,14 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
+import { Link } from 'react-router-dom';
 
 const LocationCard = (props) => {
   const { id, title, img } = props.location;
   console.log(title);
   return (
     <div>
-      <a href={`/booking/${id}`}>
+      <Link to={`/booking/${id}`}>
         <Card>
           <CardActionArea>
             <div style={{ position: 'relative' }}>
@@ -34,7 +35,7 @@ const LocationCard = (props) => {
             </div>
           </CardActionArea>
         </Card>
-      </a>
+      </Link>
     </div>
   );
 };

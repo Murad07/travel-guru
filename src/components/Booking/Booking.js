@@ -41,6 +41,7 @@ const Booking = () => {
                   id='outlined-basic'
                   label='Origin'
                   variant='outlined'
+                  required
                 />
               </Grid>
               <Grid item>
@@ -48,6 +49,7 @@ const Booking = () => {
                   id='outlined-basic'
                   label='Destination'
                   variant='outlined'
+                  required
                 />
               </Grid>
               <Grid item>
@@ -60,6 +62,7 @@ const Booking = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  required
                 />
               </Grid>
               <Grid item>
@@ -72,6 +75,7 @@ const Booking = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  required
                 />
               </Grid>
               <Grid item>

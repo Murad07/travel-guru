@@ -8,6 +8,8 @@ var location = [
       'The Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. It spans from the Hooghly River in Indias state of West Bengal to the Baleswar River in Bangladesh.',
     price: 23.99,
     img: 'sundorbon.png',
+    lat: 21.9704426,
+    lng: 89.78811589676832,
   },
   {
     id: 2,
@@ -18,6 +20,8 @@ var location = [
       'Sajek valley is known for its natural environment and is surrounded by mountains, dense forest, and grassland hill tracks. Many small rivers flow through the mountains among which the Kachalong and the Machalong are notable. On the way to Sajek valley, one has to cross the Mayni range and the Mayni river.',
     price: 25.99,
     img: 'Sajek.png',
+    lat: 23.3831187,
+    lng: 92.29356427321036,
   },
   {
     id: 3,
@@ -28,6 +32,8 @@ var location = [
       'Madhobpur Lake is one of the main tourist attractions in the area and is home to the Great White-Bellied Heron, the only confirmed site in Bangladesh.',
     price: 33.99,
     img: 'Sreemongol.png',
+    lat: 24.3105781,
+    lng: 91.725133,
   },
   {
     id: 4,
@@ -37,6 +43,8 @@ var location = [
     details: 'Simple Description about Hotel 5 STAR',
     price: 233.99,
     img: 'hotel1.png',
+    lat: 21.9704426,
+    lng: 89.78811589676832,
   },
   {
     id: 5,
@@ -46,6 +54,8 @@ var location = [
     details: 'Simple Description about Hotel MAX M',
     price: 133.99,
     img: 'hotel2.png',
+    lat: 21.9704426,
+    lng: 89.78811589676832,
   },
   {
     id: 6,
@@ -55,6 +65,8 @@ var location = [
     details: 'Simple Description about Hotel MAX M',
     price: 163.99,
     img: 'hotel3.png',
+    lat: 21.9704426,
+    lng: 89.78811589676832,
   },
   {
     id: 7,
@@ -64,6 +76,8 @@ var location = [
     details: 'Simple Description about Hotel 3 STAR',
     price: 133.99,
     img: 'hotel2.png',
+    lat: 23.3831187,
+    lng: 92.29356427321036,
   },
   {
     id: 8,
@@ -73,6 +87,8 @@ var location = [
     details: 'Simple Description about ORKID',
     price: 193.99,
     img: 'hotel1.png',
+    lat: 23.3831187,
+    lng: 92.29356427321036,
   },
   {
     id: 9,
@@ -82,6 +98,8 @@ var location = [
     details: 'Simple Description about LOREN NIGHT',
     price: 163.99,
     img: 'hotel3.png',
+    lat: 23.3831187,
+    lng: 92.29356427321036,
   },
   {
     id: 10,
@@ -91,6 +109,8 @@ var location = [
     details: 'Simple Description about GOOD DREAM',
     price: 169.99,
     img: 'hotel3.png',
+    lat: 24.3105781,
+    lng: 91.725133,
   },
   {
     id: 11,
@@ -100,6 +120,8 @@ var location = [
     details: 'Simple Description about SKY LINE',
     price: 195.99,
     img: 'hotel1.png',
+    lat: 24.3105781,
+    lng: 91.725133,
   },
   {
     id: 12,
@@ -109,6 +131,8 @@ var location = [
     details: 'Simple Description about SAND NIGHT',
     price: 160.99,
     img: 'hotel2.png',
+    lat: 24.3105781,
+    lng: 91.725133,
   },
 ];
 

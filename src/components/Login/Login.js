@@ -4,7 +4,7 @@ import fbImg from '../../images/Icon/fb.png';
 import googleImg from '../../images/Icon/google.png';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import {
   initializeLoginFramework,
   handleGoogleSignIn,
@@ -21,6 +21,13 @@ const Login = () => {
   const callLoginForm = () => {
     setNewUser(false);
   };
+
+  let matchPassword;
+  let passwordNotMatch;
+  const [newPassword, setNewPassword] = useState({
+    isPasswordMatch: false,
+    myPassword: '',
+  });
 
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
@@ -56,6 +63,7 @@ const Login = () => {
 
   const handleResponse = (res, redirect) => {
     setUser(res);
+    console.log('res: ', res);
     setLoggedInUser(res);
     if (redirect) {
       history.replace(from);
@@ -72,6 +80,20 @@ const Login = () => {
       const isPasswordValid = e.target.value.length > 7;
       const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
+      newPassword.myPassword = e.target.value;
+      setNewPassword(newPassword);
+    }
+
+    if (e.target.name === 'confirm-password') {
+      let isMatch = false;
+
+      if (e.target.value === newPassword.myPassword && e.target.value !== '') {
+        isMatch = true;
+      }
+      if (!isMatch) {
+        alert('Password not matching!');
+      }
+      isFieldValid = isMatch;
     }
 
     if (isFieldValid) {
@@ -79,6 +101,8 @@ const Login = () => {
       newUserInfo[e.target.name] = e.target.value;
       setUser(newUserInfo);
     }
+
+    console.log(isFieldValid, newPassword);
   };
 
   initializeLoginFramework();
@@ -95,131 +119,155 @@ const Login = () => {
     });
   };
 
-  const signOut = () => {
-    handleSignOut().then((res) => {
-      handleResponse(res, false);
-    });
-  };
-
   return (
     <div className='formBlade'>
-      <form>
-        <h5>Login</h5>
-
-        {newUser && (
-          <div>
-            <div className='form-group'>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='First Name'
-              />
-            </div>
-            <div className='form-group'>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Last Name'
-              />
-            </div>
-          </div>
-        )}
-
-        <div className='form-group'>
-          <input
-            type='email'
-            className='form-control'
-            placeholder='Username or Email'
-          />
-        </div>
-
-        <div className='form-group'>
-          <input
-            type='password'
-            className='form-control'
-            placeholder='Password'
-          />
-        </div>
-
-        {newUser && (
-          <div className='form-group'>
-            <input
-              type='password'
-              className='form-control'
-              placeholder='Confirm Password'
-            />
-          </div>
-        )}
-
-        <div className='form-group'>
-          <div className='custom-control custom-checkbox'>
-            <input
-              type='checkbox'
-              className='custom-control-input'
-              id='customCheck1'
-            />
-            <label
-              className='custom-control-label col-md-6'
-              htmlFor='customCheck1'
-            >
-              Remember me
-            </label>
-            <label className='col-md-6 text-right'>
-              <a className='customAnchor' href='#'>
-                Forgot password?
-              </a>
-            </label>
-          </div>
-        </div>
-
-        <button type='submit' className='btn btn-warning btn-block'>
-          {newUser ? 'Sing Up' : 'Login'}
-        </button>
-      </form>
-      {!newUser ? (
-        <label className='pt-2 alignCenter'>
-          Don't have an account?{' '}
-          <a onClick={callSignUpForm} className='customAnchor' href='#'>
-            Create a Account
-          </a>
-        </label>
-      ) : (
-        <label className='pt-2 alignCenter'>
-          Already have an account?{' '}
-          <a onClick={callLoginForm} className='customAnchor' href='#'>
-            Login
-          </a>
-        </label>
-      )}
-      <div className='separator'>Or</div>
-
-      {/* Social Media Login */}
-
-      {user.isSignIn ? (
-        <button onClick={signOut}>Sign Out</button>
-      ) : (
-        // <button onClick={googleSignIn}>Sign In</button>
+      {!loggedInUser.isSignIn && (
         <div>
-          <div className='pt-3 px-5'>
-            <button onClick={fbSignIn} className='socialBtn'>
-              <img src={fbImg} height='25' width='25' alt='' className='mr-5' />
-              Continue With Facebook
-            </button>
-          </div>
-          <div className='pt-3 px-5'>
-            <button onClick={googleSignIn} className='socialBtn'>
-              <img
-                src={googleImg}
-                height='25'
-                width='25'
-                alt=''
-                className='mr-5'
+          <form onSubmit={handleSubmit}>
+            <h5>Login</h5>
+
+            {newUser && (
+              <div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    name='name'
+                    className='form-control'
+                    placeholder='First Name'
+                    onBlur={handleOnBlur}
+                    required
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    name='last-name'
+                    className='form-control'
+                    placeholder='Last Name'
+                    onBlur={handleOnBlur}
+                    required
+                  />
+                </div>
+              </div>
+            )}
+
+            <div className='form-group'>
+              <input
+                type='email'
+                name='email'
+                className='form-control'
+                placeholder='Username or Email'
+                onBlur={handleOnBlur}
+                required
               />
-              Continue With Google
+            </div>
+
+            <div className='form-group'>
+              <input
+                type='password'
+                name='password'
+                className='form-control'
+                placeholder='Password'
+                onBlur={handleOnBlur}
+                required
+              />
+            </div>
+
+            {newUser && (
+              <div className='form-group'>
+                <input
+                  type='password'
+                  name='confirm-password'
+                  className='form-control'
+                  placeholder='Confirm Password'
+                  onBlur={handleOnBlur}
+                  required
+                />
+              </div>
+            )}
+
+            <div className='form-group'>
+              <div className='custom-control custom-checkbox'>
+                <input
+                  type='checkbox'
+                  className='custom-control-input'
+                  id='customCheck1'
+                />
+                <label
+                  className='custom-control-label col-md-6'
+                  htmlFor='customCheck1'
+                >
+                  Remember me
+                </label>
+                <label className='col-md-6 text-right'>
+                  <a className='customAnchor' href='#'>
+                    Forgot password?
+                  </a>
+                </label>
+              </div>
+            </div>
+            <button type='submit' className='btn btn-warning btn-block'>
+              {newUser ? 'Sing Up' : 'Login'}
             </button>
+          </form>
+
+          {!newUser ? (
+            <label className='pt-2 alignCenter'>
+              Don't have an account?{' '}
+              <Link
+                to='/login'
+                onClick={callSignUpForm}
+                className='customAnchor'
+              >
+                Create a Account
+              </Link>
+            </label>
+          ) : (
+            <label className='pt-2 alignCenter'>
+              Already have an account?{' '}
+              <Link
+                to='/login'
+                onClick={callLoginForm}
+                className='customAnchor'
+              >
+                Login
+              </Link>
+            </label>
+          )}
+
+          <div className='separator'>Or</div>
+
+          {/* Social Media Login */}
+
+          <div>
+            <div className='pt-3 px-5'>
+              <button onClick={fbSignIn} className='socialBtn'>
+                <img
+                  src={fbImg}
+                  height='25'
+                  width='25'
+                  alt=''
+                  className='mr-5'
+                />
+                Continue With Facebook
+              </button>
+            </div>
+            <div className='pt-3 px-5'>
+              <button onClick={googleSignIn} className='socialBtn'>
+                <img
+                  src={googleImg}
+                  height='25'
+                  width='25'
+                  alt=''
+                  className='mr-5'
+                />
+                Continue With Google
+              </button>
+            </div>
           </div>
         </div>
       )}
+
       {user.success && (
         <p style={{ color: 'green' }}>
           {newUser ? 'Create User' : 'Login In'} Succesfuly

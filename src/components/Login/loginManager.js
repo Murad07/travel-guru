@@ -75,11 +75,20 @@ export const createUserWithEmailAndPassword = (name, email, password) => {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then((res) => {
-      const newUserInfo = res.user;
-      newUserInfo.error = '';
-      newUserInfo.success = true;
+      // const newUserInfo = res.user;
+      // newUserInfo.error = '';
+      // newUserInfo.success = true;
       updateUserName(name);
-      return newUserInfo;
+      // return newUserInfo;
+      const { displayName, photoURL, email } = res.user;
+      const signedInUser = {
+        isSignIn: true,
+        name: displayName,
+        email: email,
+        photo: photoURL,
+        success: true,
+      };
+      return signedInUser;
     })
     .catch((error) => {
       // Handle Errors here.
@@ -95,10 +104,19 @@ export const signInWithEmailAndPassword = (email, password) => {
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((res) => {
-      const newUserInfo = res.user;
-      newUserInfo.error = '';
-      newUserInfo.success = true;
-      return newUserInfo;
+      // const newUserInfo = res.user;
+      // newUserInfo.error = '';
+      // newUserInfo.success = true;
+      // return newUserInfo;
+      const { displayName, photoURL, email } = res.user;
+      const signedInUser = {
+        isSignIn: true,
+        name: displayName,
+        email: email,
+        photo: photoURL,
+        success: true,
+      };
+      return signedInUser;
     })
     .catch(function (error) {
       const newUserInfo = {};
